@@ -33,11 +33,13 @@ if(isset($_GET['email'])){
 <form action="index.php" method="GET" class="mb-2">
   <label for="email">Inserisci la email</label>
   <!-- Se utente ha errato allora mostra email errata nell'input -->
-  <input name="email" type="text" placeholder="<?php echo isset($_GET['email']) ? $_GET['email']  : 'user@gmail.com' ?>">
+  <input name="email" type="text" value="<?php echo isset($_GET['email']) ? $_GET['email'] : null  ?>" placeholder="<?php echo isset($_GET['email']) ? null  : 'user@gmail.com' ?>">
   <button type="submit">Invia</button>
 </form>
 <?php 
- emailChecker($_GET['email']);
+if(isset($_GET['email'])){
+  emailChecker($_GET['email']);
+}
 ?>
 
 </div>
