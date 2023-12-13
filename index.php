@@ -1,19 +1,20 @@
 <?php
-include "./partials/function.php"
+include "./partials/function.php";
 
-// /* Se email esiste */
-// if(isset($_GET['email'])){
+/* Se email esiste */
+if(isset($_GET['email'])){
 
-//   /* Allora se contiene @ e . stmapa */
-//   if(str_contains($_GET['email'], '@') && str_contains($_GET['email'] , '.')){
-//     echo 'email valida';
+  /* Inzio la sessione */
+  session_start();
+  /* Salvo il valore inserito dall'utente nell'array $_SESSION */
+  $_SESSION['userEmail'] = $_GET['email'];
+  /* Chiamo la funzione e se la email è valida rindirizzo l'utente un una nuova pagina */
+  redirection($_GET['email']);
 
-//     /* Atrimenti mostra avviso di email non valida */
-//   } else {
-//     echo 'mail non valida!';
-//   }
   
-// }
+  // emailChecker($_GET['email']);
+}
+
 
 ?>
 
@@ -31,25 +32,14 @@ include "./partials/function.php"
 <div class="container mt-5 text-center">
 <form action="index.php" method="GET" class="mb-2">
   <label for="email">Inserisci la email</label>
-  <input name="email" type="text" placeholder="user@gmail.com">
+  <!-- Se utente ha errato allora mostra email errata nell'input -->
+  <input name="email" type="text" placeholder="<?php echo isset($_GET['email']) ? $_GET['email']  : 'user@gmail.com' ?>">
   <button type="submit">Invia</button>
 </form>
-
 <?php 
-/* Se email esiste */
-if(isset($_GET['email'])){
-
-  /* Inzio la sessione */
-  session_start();
-  /* Salvo il valore inserito dall'utente nell'array $_SESSION */
-  $_SESSION['userEmail'] = $_GET['email'];
-
-  redirection($_GET['email']);
-
-  
-  // emailChecker($_GET['email']);
-}
+ emailChecker($_GET['email']);
 ?>
+
 </div>
 
   
