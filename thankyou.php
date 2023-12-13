@@ -4,6 +4,7 @@ session_start();
 
 var_dump($_SESSION['userEmail']);
 
+
 ?>
 
 
@@ -18,9 +19,15 @@ var_dump($_SESSION['userEmail']);
 </head>
 <body>
   <div class="container mt-5 text-center">
-  <div class="alert alert-success" role="alert"><h2>Email valida!</h2></div>
+  <div class="alert alert-success" role="alert"><h2>la Email <?php echo $_SESSION['userEmail'] ?> è valida!</h2></div>
+  <a class="btn btn-primary" href="./index.php">Torna alla email</a>
     
   </div>
   
 </body>
 </html>
+
+<?php
+  session_unset();
+  session_destroy();
+?>
