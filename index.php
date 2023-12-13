@@ -38,7 +38,16 @@ include "./partials/function.php"
 <?php 
 /* Se email esiste */
 if(isset($_GET['email'])){
-  emailChecker($_GET['email']);
+
+  /* Inzio la sessione */
+  session_start();
+  /* Salvo il valore inserito dall'utente nell'array $_SESSION */
+  $_SESSION['userEmail'] = $_GET['email'];
+
+  redirection($_GET['email']);
+
+  
+  // emailChecker($_GET['email']);
 }
 ?>
 </div>

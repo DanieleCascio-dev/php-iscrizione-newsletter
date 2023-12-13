@@ -12,3 +12,6 @@ function emailChecker($string) {
 
   }
 
+function redirection($string) {
+  (str_contains($string, '@') && str_contains($string , '.')) ? header('location: ./thankyou.php') : header('location: ./index.php');
+}
