@@ -2,7 +2,7 @@
 
 session_start();
 
-var_dump($_SESSION['userEmail']);
+// var_dump($_SESSION['userEmail']);
 
 
 ?>
